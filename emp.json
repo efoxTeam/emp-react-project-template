@@ -1,0 +1,12 @@
+{
+  "name": "empReactBase",
+  "remotes": {
+    "@emp/react-base": "empReactBase"
+  },
+  "exposes": {
+    "./components/Hello": "src/components/Hello",
+    "./helper": "src/helper"
+  },
+  "shared": {
+  }
+}

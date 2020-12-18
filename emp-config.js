@@ -1,6 +1,7 @@
 const path = require('path')
 const packagePath = path.join(path.resolve('./'), 'package.json')
 const { dependencies } = require(packagePath)
+const empConfig = require(`${resolveApp('')}/emp.json`);
 
 module.exports = ({ config, env, empEnv }) => {
   console.log('empEnv===> 部署环境变量 serve模式不需要该变量', empEnv, env)
@@ -16,26 +17,13 @@ module.exports = ({ config, env, empEnv }) => {
     args[0] = {
       ...args[0],
       ...{
+        ...empConfig,
         // 项目名称
-        name: projectName,
+        name: empConfig.name,
         // 暴露项目的全局变量名
         library: { type: 'var', name: projectName },
         // 被远程引入的文件名
         filename: 'emp.js',
-        remotes: {
-          // 远程项目别名:远程引入的项目名
-          '@emp/react-base': 'empReactBase',
-        },
-        // 需要暴露的东西
-        exposes: {
-          // 别名:组件的路径
-          './components/Hello': 'src/components/Hello',
-          './helper': 'src/helper',
-        },
-        // 需要共享的依赖
-        shared: {
-          ...dependencies,
-        },
       },
     }
     return args
