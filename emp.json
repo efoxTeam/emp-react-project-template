@@ -1,7 +1,7 @@
 {
-  "name": "empReactBase",
+  "name": "empReactProject",
   "remotes": {
-    "@emp/react-base": "empReactBase"
+    "@emp/react-base": "empReactBase@http://localhost:8001/emp.js"
   },
   "exposes": {
     "./components/Hello": "src/components/Hello",
