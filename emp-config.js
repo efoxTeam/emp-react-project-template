@@ -1,7 +1,6 @@
 const path = require('path')
 const packagePath = path.join(path.resolve('./'), 'package.json')
 const {dependencies} = require(packagePath)
-const empConfig = require(`${resolveApp('')}/emp.json`)
 
 module.exports = ({config, env, empEnv}) => {
   console.log('empEnv===> 部署环境变量 serve模式不需要该变量', empEnv, env)
@@ -15,11 +14,18 @@ module.exports = ({config, env, empEnv}) => {
   config.plugin('mf').tap(args => {
     args[0] = {
       ...args[0],
-      ...{
-        ...empConfig,
+        name: "empReactProject",
+        remotes: {
+          "@emp/react-base": "empReactBase@http://localhost:8001/emp.js"
+        },
+        exposes: {
+          "./components/Hello": "src/components/Hello",
+          "./helper": "src/helper"
+        },
+        shared: {
+        },
         // 被远程引入的文件名
         filename: 'emp.js',
-      },
     }
     return args
   })

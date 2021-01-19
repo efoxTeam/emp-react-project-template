@@ -15,8 +15,8 @@
     "stat": "emp build --analyze"
   },
   "devDependencies": {
-    "@efox/emp-cli": "^1.1.19",
-    "@efox/emp-tsconfig": "^1.0.5",
+    "@efox/emp-cli": "latest",
+    "@efox/emp-tsconfig": "latest",
     "@efox/eslint-config-react-prittier-ts": "^1.1.0",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
